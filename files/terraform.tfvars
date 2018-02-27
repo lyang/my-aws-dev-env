@@ -4,6 +4,6 @@
 # ebs-snapshot-schedule = "cron(0 9 ? * MON *)"
 # ebs-type = "gp2"
 # instance-type = "t2.micro"
-primary-user = lyang
+primary-user = "lyang"
 # ssh-key-dir = "~/.ssh/aws-dev-env/"
 # system-user = "ec2-user"

@@ -1,0 +1,19 @@
+---
+- name: terraform plan
+  shell:
+    cmd: terraform plan -out={{'aws-dev-env-template/generated/tfplan' | realpath }} -input=false -var-file {{ 'files/terraform.tfvars' | realpath }}
+    chdir: aws-dev-env-template/terraform
+  register: tf_plan
+  changed_when: "tf_plan.stdout | search('Terraform will perform the following actions')"
+
+- name: review terraform plan
+  pause:
+    prompt: "{{ tf_plan.stdout + \"\n\" + 'Ctrl-C C to continue, Ctrl-C A to abort' }}"
+  when: "tf_plan.stdout | search('Terraform will perform the following actions')"
+
+- name: terraform apply
+  shell:
+    cmd: terraform apply -input=false {{'aws-dev-env-template/generated/tfplan' | realpath }}
+    chdir: aws-dev-env-template/terraform
+  register: tf_apply
+  when: "tf_plan.stdout | search('Terraform will perform the following actions')"

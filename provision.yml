@@ -3,9 +3,19 @@
   gather_facts: no
   connection: local
   tasks:
-  - include_tasks: tasks/local.yml
+  - include_tasks: tasks/terraform/setup.yml
+  - include_tasks: tasks/terraform/apply.yml
+
+- import_playbook: aws-dev-env-template/ansible/bootstrap.yml
+
+- hosts: localhost
+  gather_facts: no
+  connection: local
+  tasks:
+  - include_tasks: tasks/setup_ssh.yml
 
 - hosts: managed
+  gather_facts: no
   become: yes
   tasks:
   - include_tasks: tasks/package.yml

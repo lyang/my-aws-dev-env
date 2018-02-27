@@ -1,0 +1,7 @@
+---
+- name: terraform init
+  shell:
+    cmd: terraform init --backend-config={{ 'files/s3-backend-config' | realpath }}
+    chdir: aws-dev-env-template/terraform
+  register: tf_backend
+  changed_when: "tf_backend.stdout | search('Successfully configured the backend')"
