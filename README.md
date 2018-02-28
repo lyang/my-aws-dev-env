@@ -24,7 +24,7 @@ You need to make changes to [s3-backend-config](files/s3-backend-config) to use 
 
 Then:
 ```
-cd my-aws-dev-env.git && ansible-playbook provision.yml
+cd my-aws-dev-env && ansible-playbook provision.yml
 ```
 
 You will be prompted to review the terraform execution plan and then ssh host key verification of the new EC2 instance. The setup shouldn't take more than a few minutes.
