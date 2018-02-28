@@ -8,7 +8,7 @@
 
 - name: review terraform plan
   pause:
-    prompt: "{{ tf_plan.stdout + \"\n\" + 'Ctrl-C C to continue, Ctrl-C A to abort' }}"
+    prompt: "{{ tf_plan.stdout + \"\n\" + 'Enter to continue, Ctrl-C A to abort' }}"
   when: "tf_plan.stdout | search('Terraform will perform the following actions')"
 
 - name: terraform apply
@@ -17,3 +17,6 @@
     chdir: aws-dev-env-template/terraform
   register: tf_apply
   when: "tf_plan.stdout | search('Terraform will perform the following actions')"
+
+- name: Refresh inventory to ensure new instaces exist in inventory
+  meta: refresh_inventory
