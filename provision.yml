@@ -3,8 +3,8 @@
   gather_facts: no
   connection: local
   tasks:
-  - include_tasks: tasks/terraform/setup.yml
-  - include_tasks: tasks/terraform/apply.yml
+  - import_tasks: tasks/terraform/setup.yml
+  - import_tasks: tasks/terraform/apply.yml
 
 - import_playbook: aws-dev-env-template/ansible/bootstrap.yml
 
@@ -12,11 +12,11 @@
   gather_facts: no
   connection: local
   tasks:
-  - include_tasks: tasks/setup_ssh.yml
+  - import_tasks: tasks/setup_ssh.yml
 
 - hosts: managed
   gather_facts: no
   become: yes
   tasks:
-  - include_tasks: tasks/package.yml
-  - include_tasks: tasks/vnc.yml
+  - import_tasks: tasks/package.yml
+  - import_tasks: tasks/vnc.yml

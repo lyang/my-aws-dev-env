@@ -1,13 +1,21 @@
 ---
 - name: Install Packages
-  package:
+  apt:
     name: "{{ item }}"
     state: latest
+    install_recommends: no
   with_items:
+    - chromium
     - git
     - lxde
+    - openjdk-8-jdk
     - tmux
     - tigervnc-standalone-server
     - x11-apps
     - xorg
     - xserver-xorg-video-all
+
+- name: Make lxde default window manager
+  alternatives:
+    name: x-window-manager
+    path: /usr/bin/startlxde
