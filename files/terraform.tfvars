@@ -1,3 +1,5 @@
+region = "us-west-2"
+availability-zone = "us-west-2a"
 # ami-id=""
 # ebs-size = 10
 # ebs-snapshot-retention-days = 30
