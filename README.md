@@ -21,6 +21,7 @@ Assuming you have went through the instructions on [aws-dev-env-template](https:
 git clone --recurse-submodules https://github.com/lyang/my-aws-dev-env.git
 ```
 You need to make changes to [s3-backend-config](files/s3-backend-config) to use your own S3 bucket for terraform backend.
+You also need to make changes to [terraform.tfvars](files/terraform.tfvars) to tweak the variables to your needs.
 
 Then:
 ```
