@@ -32,6 +32,15 @@ You will be prompted to review the terraform execution plan and then ssh host ke
 
 By now you should be able to `ssh dev` into your new instance and play around. If you have VNC client installed, you should be able to connect to `localhost:5901` leveraging SSH port forward.
 
+## How do I clean it up
+
+To clean up resources created in AWS:
+```
+cd my-aws-dev-env && ansible-playbook teardown.yml
+```
+
+You'll also need to manually cleanup your local `~/.ssh/config` and `~/.ssh/aws-dev-env/` (or the dir you specified in [terraform.tfvars](files/terraform.tfvars))
+
 ## What's next?
 If you find this useful, you can copy the structure of this project and tweak the setup to better suit your needs.
 You can also clone or fork this repo, but I won't accept any pull requests as this repo is my personal setup.
