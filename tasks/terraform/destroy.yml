@@ -1,7 +1,7 @@
 ---
 - name: terraform destroy
   shell:
-    cmd: terraform destroy -force
+    cmd: terraform destroy -no-color -force -input=false -var-file {{ 'files/terraform.tfvars' | realpath }}
     chdir: aws-dev-env-template/terraform
   register: tf_destroy
   changed_when: "not tf_destroy.stdout | search('Destroy complete! Resources: 0 destroyed.')"

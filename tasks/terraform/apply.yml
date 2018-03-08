@@ -13,7 +13,7 @@
 
 - name: terraform apply
   shell:
-    cmd: terraform apply -input=false {{'aws-dev-env-template/generated/tfplan' | realpath }}
+    cmd: terraform apply -no-color -input=false {{'aws-dev-env-template/generated/tfplan' | realpath }}
     chdir: aws-dev-env-template/terraform
   register: tf_apply
   when: "tf_plan.stdout | search('Terraform will perform the following actions')"
